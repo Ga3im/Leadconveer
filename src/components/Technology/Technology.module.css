@@ -1,0 +1,65 @@
+.content {
+  padding: 60px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 60px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.imgContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.star {
+  position: relative;
+  z-index: 1;
+  right: 560px;
+  top: 80px;
+}
+
+.secondStar {
+  position: relative;
+  rotate: 30deg;
+  right: 25px;
+  width: 7%;
+}
+
+.img {
+  width: 80%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 600px;
+}
+
+.leftTitle {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.spancolor {
+  color: #ff6600;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text {
+  font-family: "Inter", sans-serif;
+  color: #2d2d2d;
+  font-size: 24px;
+  font-weight: 400;
+}

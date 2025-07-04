@@ -1,0 +1,87 @@
+.content {
+  margin: 60px 70px;
+  padding: 80px 100px;
+  background-color: #f6f6f6;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 40px;
+}
+
+.title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+.swipeContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: auto;
+  gap: 100px;
+  scrollbar-width: none;
+}
+
+.swipe {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  align-items: center;
+  padding: 60px 0px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 550px;
+}
+
+.countContent {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+.count {
+  font-size: 80px;
+  font-weight: 700;
+}
+
+.titleItem {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+}
+
+.right {
+  width: 550px;
+}
+
+.text {
+  font-size: 24px;
+  font-weight: 400;
+  color: #2d2d2d;
+}
+
+.page {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pageCount {
+  border-radius: 100%;
+  background-color: #dbdbdb;
+  width: 30px;
+  height: 30px;
+}
+
+.pageCountCurrent {
+  border-radius: 100%;
+  background-color: #ff6600;
+  width: 30px;
+  height: 30px;
+}

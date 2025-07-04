@@ -1,0 +1,78 @@
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 60px 70px;
+}
+
+.titleContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 52px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.spancolor {
+  color: #ff6600;
+}
+
+.videoContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #2d2d2d;
+  width: 1180px;
+  height: 540px;
+}
+
+.play {
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}
+.play:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.pause {
+  display: flex;
+  position: relative;
+  left: 35px;
+}
+.pause:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.leftItem {
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(100% 75%, 0% 75%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}
+
+.rightItem {
+  position: relative;
+  right: 35px;
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(100% 75%, 0% 75%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}

@@ -1,0 +1,180 @@
+.stars {
+  width: 40px;
+}
+
+.content {
+  text-align: center;
+  padding: 60px 0px 60px 0px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 20px;
+}
+
+.spancolor {
+  color: #ff6600;
+}
+
+.text {
+  color: #808080;
+  font-size: 30px;
+  font-weight: 400;
+  padding-bottom: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  background-color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 330px;
+  height: 200px;
+}
+
+.img {
+  width: 65%;
+}
+
+.review {
+  font-family: "Montserrat", sans-serif;
+  padding: 60px 70px;
+}
+
+.reviewTitle {
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.starsContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewText {
+  font-size: 32px;
+  font-family: "Inter", sans-serif;
+  padding-bottom: 40px;
+  font-weight: 400;
+  color: #808080;
+  text-align: center;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.reviewItem {
+  padding: 30px;
+  background-color: #f6f6f6;
+  width: 320px;
+  border-radius: 30px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.star {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.reviewItemText {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.niche {
+  color: #808080;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.videoContent {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 430px;
+  height: 270px;
+  background-color: #2d2d2d;
+  border-radius: 40px;
+  margin-bottom: 12px;
+}
+
+.play {
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}
+.play:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.pause {
+  display: flex;
+  position: relative;
+  left: 35px;
+}
+.pause:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.leftItem {
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(100% 75%, 0% 75%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}
+
+.rightItem {
+  position: relative;
+  right: 35px;
+  transition: all 0.3s;
+  width: 60px;
+  rotate: 90deg;
+  height: 60px;
+  clip-path: polygon(100% 75%, 0% 75%, 0% 100%, 100% 100%);
+  background: linear-gradient(90deg, #ff6600, #8d13f9);
+}
+
+.videoText {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #2d2d2d;
+}
