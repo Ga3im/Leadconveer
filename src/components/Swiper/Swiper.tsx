@@ -37,16 +37,50 @@ export const Swiper = () => {
       } else {
         console.log("left");
       }
-    } else {
-      if (Ydiff > 0) {
-        console.log("top");
-      } else {
-        console.log("bottom");
-      }
     }
+    // else {
+    // if (Ydiff > 0) {
+    //   console.log("top");
+    // } else {
+    //   console.log("bottom");
+    // }
+    // }
     x1 = null;
     y1 = null;
   }
+
+  let X1: number | null = null;
+  let Y1: number | null = null;
+
+  const mouseStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    X1 = e.clientX;
+    Y1 = e.clientY;
+  };
+
+  const mouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    let x2: number | null = e.clientX;
+    let y2: number | null = e.clientY;
+
+    let Xdiff: number | null = x2 - X1;
+    let Ydiff: number | null = y2 - Y1;
+
+    if (Math.abs(Xdiff) > Math.abs(Ydiff)) {
+      if (Xdiff > 0) {
+        console.log("right");
+      } else {
+        console.log("left");
+      }
+    }
+    // else {
+    //   if (Ydiff > 0) {
+    //     console.log("top");
+    //   } else {
+    //     console.log("bottom");
+    //   }
+    // }
+    X1 = null;
+    Y1 = null;
+  };
 
   const arr: arrType[] = [
     {
@@ -82,32 +116,34 @@ export const Swiper = () => {
   ];
 
   useEffect(() => {
-    console.log(selected);
-  }, [selected]);
+    setSelected(arr[0]);
+  }, []);
 
   return (
-    <>
-      <div className={s.content}>
+    <div className={s.wrapper}>
+      <div
+        onTouchStart={touchStart}
+        onTouchMove={touchMove}
+        onClick={mouseStart}
+        onMouseDown={mouseMove}
+        className={s.content}
+      >
         <h1 className={s.title}>Как это работает?</h1>
-        <div
-          onTouchStart={touchStart}
-          onTouchMove={touchMove}
-          className={s.swipeContent}
-        >
-          {arr.map((item, index) => (
-            <div key={item.emodji} className={s.swipe}>
-              <div className={s.left}>
-                <div className={s.countContent}>
-                  <p className={s.count}>0{index + 1}</p>
-                  <img src={item.emodji} alt="" />
-                </div>
-                <h2 className={s.titleItem}>{item.title}</h2>
+        <div className={s.swipeContent}>
+          <div className={s.swipe}>
+            <div className={s.left}>
+              <div className={s.countContent}>
+                <p className={s.count}>0{selected ? selected.id : arr[0].id}</p>
+                <img src={selected ? selected.emodji : arr[0].emodji} alt="" />
               </div>
-              <div className={s.right}>
-                <p className={s.text}>{item.text}</p>
-              </div>
+              <h2 className={s.titleItem}>
+                {selected ? selected.title : arr[0].title}
+              </h2>
             </div>
-          ))}
+            <div className={s.right}>
+              <p className={s.text}>{selected ? selected.text : arr[0].text}</p>
+            </div>
+          </div>
         </div>
         <div className={s.page}>
           {arr.map((i) => (
@@ -121,6 +157,6 @@ export const Swiper = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };

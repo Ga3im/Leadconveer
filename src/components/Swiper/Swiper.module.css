@@ -1,9 +1,16 @@
+.wrapper {
+  display: -webkit-box;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
 .content {
   margin: 60px 70px;
   padding: 80px 100px;
   background-color: #f6f6f6;
   font-family: "Montserrat", sans-serif;
   border-radius: 40px;
+  width: 90%;
 }
 
 .title {
@@ -11,21 +18,20 @@
   font-size: 48px;
   font-weight: 700;
   color: #2d2d2d;
+  pointer-events: none;
 }
 
 .swipeContent {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow: auto;
   gap: 100px;
-  scrollbar-width: none;
 }
 
 .swipe {
   display: flex;
   flex-direction: row;
-  gap: 70px;
+  gap: 90px;
   align-items: center;
   padding: 60px 0px;
 }
@@ -34,7 +40,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 550px;
+  width: 50%;
 }
 
 .countContent {
@@ -56,7 +62,7 @@
 }
 
 .right {
-  width: 550px;
+  width: 50%;
 }
 
 .text {
