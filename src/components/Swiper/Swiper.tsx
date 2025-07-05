@@ -1,4 +1,4 @@
-import { useEffect, useState, type TouchEvent } from "react";
+import { useEffect, useState } from "react";
 import s from "./Swiper.module.css";
 
 type arrType = {
@@ -10,76 +10,53 @@ type arrType = {
 
 export const Swiper = () => {
   const [selected, setSelected] = useState<arrType | null>(null);
-  // document.addEventListener("touchstart", touchStart, false);
-  // document.addEventListener("touchmove", touchMove, false);
 
-  let x1: number | null = null;
-  let y1: number | null = null;
-
-  function touchStart(e: TouchEvent<HTMLDivElement>) {
-    x1 = Math.round(e.touches[0].clientX);
-    y1 = Math.round(e.touches[0].clientY);
-  }
-
-  function touchMove(e: TouchEvent<HTMLDivElement>) {
-    if (!x1 || !y1) {
-      return false;
-    }
-    let x2: number | null = Math.round(e.touches[0].clientX);
-    let y2: number | null = Math.round(e.touches[0].clientY);
-
-    let Xdiff: number | null = x2 - x1;
-    let Ydiff: number | null = y2 - y1;
-
-    if (Math.abs(Xdiff) > Math.abs(Ydiff)) {
-      if (Xdiff > 0) {
-        console.log("right");
-      } else {
-        console.log("left");
-      }
-    }
-    // else {
-    // if (Ydiff > 0) {
-    //   console.log("top");
-    // } else {
-    //   console.log("bottom");
-    // }
-    // }
-    x1 = null;
-    y1 = null;
-  }
-
-  let X1: number | null = null;
-  let Y1: number | null = null;
+  let X1: number | null;
+  let Y1: number | null;
+  let Xdiff: number | null;
+  let Ydiff: number | null;
 
   const mouseStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     X1 = e.clientX;
     Y1 = e.clientY;
   };
 
-  const mouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const mouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     let x2: number | null = e.clientX;
     let y2: number | null = e.clientY;
 
-    let Xdiff: number | null = x2 - X1;
-    let Ydiff: number | null = y2 - Y1;
+    Xdiff = x2 - X1;
+    Ydiff = y2 - Y1;
 
-    if (Math.abs(Xdiff) > Math.abs(Ydiff)) {
-      if (Xdiff > 0) {
-        console.log("right");
-      } else {
-        console.log("left");
-      }
-    }
-    // else {
-    //   if (Ydiff > 0) {
-    //     console.log("top");
-    //   } else {
-    //     console.log("bottom");
-    //   }
-    // }
     X1 = null;
     Y1 = null;
+    if (Math.abs(Xdiff) > Math.abs(Ydiff)) {
+      if (Xdiff > 0) {
+        swipeRight();
+      } else {
+        swipeLeft();
+      }
+    }
+    X1 = null;
+    Y1 = null;
+  };
+
+  const swipeLeft = (): void => {
+    let prev: number = selected.id + 1;
+    arr.map((i) => {
+      if (prev === i.id) {
+        setSelected(i);
+      }
+    });
+  };
+
+  const swipeRight = (): void => {
+    let prev: number = selected.id - 1;
+    arr.map((i) => {
+      if (prev === i.id) {
+        setSelected(i);
+      }
+    });
   };
 
   const arr: arrType[] = [
@@ -121,13 +98,7 @@ export const Swiper = () => {
 
   return (
     <div className={s.wrapper}>
-      <div
-        onTouchStart={touchStart}
-        onTouchMove={touchMove}
-        onClick={mouseStart}
-        onMouseDown={mouseMove}
-        className={s.content}
-      >
+      <div onMouseDown={mouseStart} onMouseUp={mouseUp} className={s.content}>
         <h1 className={s.title}>Как это работает?</h1>
         <div className={s.swipeContent}>
           <div className={s.swipe}>
