@@ -19,6 +19,7 @@
   font-weight: 700;
   color: #2d2d2d;
   pointer-events: none;
+  user-select: none;
 }
 
 .swipeContent {
@@ -48,6 +49,7 @@
   flex-direction: row;
   gap: 40px;
   align-items: center;
+  user-select: none;
 }
 
 .count {
@@ -59,6 +61,7 @@
   font-weight: 700;
   font-size: 48px;
   line-height: 52px;
+  user-select: none;
 }
 
 .right {
@@ -69,6 +72,7 @@
   font-size: 24px;
   font-weight: 400;
   color: #2d2d2d;
+  user-select: none;
 }
 
 .page {
