@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type TouchEvent } from "react";
 import s from "./Swiper.module.css";
 
 type arrType = {
@@ -15,6 +15,32 @@ export const Swiper = () => {
   let Y1: number | null;
   let Xdiff: number | null;
   let Ydiff: number | null;
+
+  function touchStart(e: TouchEvent<HTMLDivElement>) {
+    X1 = Math.round(e.touches[0].clientX);
+    Y1 = Math.round(e.touches[0].clientY);
+  }
+
+  function touchMove(e: TouchEvent<HTMLDivElement>) {
+    if (!X1 || !Y1) {
+      return false;
+    }
+    let x2: number | null = Math.round(e.touches[0].clientX);
+    let y2: number | null = Math.round(e.touches[0].clientY);
+
+    let Xdiff: number | null = x2 - X1;
+    let Ydiff: number | null = y2 - Y1;
+
+    if (Math.abs(Xdiff) > Math.abs(Ydiff)) {
+      if (Xdiff > 0) {
+        swipeRight();
+      } else {
+        swipeLeft();
+      }
+    }
+    X1 = null;
+    Y1 = null;
+  }
 
   const mouseStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     X1 = e.clientX;
@@ -98,7 +124,13 @@ export const Swiper = () => {
 
   return (
     <div className={s.wrapper}>
-      <div onMouseDown={mouseStart} onMouseUp={mouseUp} className={s.content}>
+      <div
+        onMouseDown={mouseStart}
+        onMouseUp={mouseUp}
+        onTouchStart={touchStart}
+        onTouchMove={touchMove}
+        className={s.content}
+      >
         <h1 className={s.title}>Как это работает?</h1>
         <div className={s.swipeContent}>
           <div className={s.swipe}>
