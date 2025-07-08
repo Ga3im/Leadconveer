@@ -27,6 +27,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
+  transition: all 0.3s;
+}
+.swipeContent.animating {
+  opacity: 0.5;
+  transform: scale(0.98);
 }
 
 .swipe {

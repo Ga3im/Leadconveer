@@ -9,6 +9,7 @@ type arrType = {
 };
 
 export const Swiper = () => {
+  const [isAnimating, setIsAnimating] = useState(false);
   const [selected, setSelected] = useState<arrType | null>(null);
 
   let X1: number | null;
@@ -51,6 +52,10 @@ export const Swiper = () => {
     let x2: number | null = e.clientX;
     let y2: number | null = e.clientY;
 
+    if (!X1 || !Y1) {
+      return;
+    }
+
     Xdiff = x2 - X1;
     Ydiff = y2 - Y1;
 
@@ -67,22 +72,74 @@ export const Swiper = () => {
     Y1 = null;
   };
 
+  // const swipeLeft = (): void => {
+  //   if (!selected) {
+  //     return;
+  //   }
+  //   let prev: number = selected.id + 1;
+  //   arr.map((i) => {
+  //     if (prev === i.id) {
+  //       setSelected(i);
+  //     }
+  //   });
+  // };
+
+  // const swipeRight = (): void => {
+  //   if (selected) {
+  //     let prev: number = selected.id - 1;
+  //     if (prev < 1) {
+  //       return;
+  //     }
+  //     setAnimating(true)
+  //     setTimeout(() => {
+  //       const prevItem = arr.find(i => prev === i.id)
+  //       if (prevItem) {
+  //         setSelected(prevItem)
+  //       }
+  //       setAnimating(false)
+  //     }, 300);
+
+  //     // arr.map((i) => {
+  //     //   if (prev === i.id) {
+  //     //     setSelected(i);
+  //     //   }
+  //     // });
+  //   }
+  // };
+
   const swipeLeft = (): void => {
+    if (!selected || isAnimating) return;
     let prev: number = selected.id + 1;
-    arr.map((i) => {
-      if (prev === i.id) {
-        setSelected(i);
-      }
-    });
+    if (prev > arr.length) return;
+
+    setIsAnimating(true);
+    setTimeout(() => {
+      const nextItem = arr.find((i) => prev === i.id);
+      if (nextItem) setSelected(nextItem);
+      setIsAnimating(false);
+    }, 300);
   };
 
   const swipeRight = (): void => {
+    if (!selected || isAnimating) return;
     let prev: number = selected.id - 1;
-    arr.map((i) => {
-      if (prev === i.id) {
-        setSelected(i);
-      }
-    });
+    if (prev < 1) return;
+
+    setIsAnimating(true);
+    setTimeout(() => {
+      const prevItem = arr.find((i) => prev === i.id);
+      if (prevItem) setSelected(prevItem);
+      setIsAnimating(false);
+    }, 300);
+  };
+
+  const handleDotClick = (item: arrType) => {
+    if (isAnimating || selected?.id === item.id) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setSelected(item);
+      setIsAnimating(false);
+    }, 300);
   };
 
   const arr: arrType[] = [
@@ -132,7 +189,7 @@ export const Swiper = () => {
         className={s.content}
       >
         <h1 className={s.title}>Как это работает?</h1>
-        <div className={s.swipeContent}>
+        <div className={`${s.swipeContent} ${isAnimating ? s.animating : ""}`}>
           <div className={s.swipe}>
             <div className={s.left}>
               <div className={s.countContent}>
@@ -151,7 +208,7 @@ export const Swiper = () => {
         <div className={s.page}>
           {arr.map((i) => (
             <div
-              onClick={() => setSelected(i)}
+              onClick={() => handleDotClick(i)}
               key={i.id}
               className={
                 i.id === selected?.id ? s.pageCountCurrent : s.pageCount
